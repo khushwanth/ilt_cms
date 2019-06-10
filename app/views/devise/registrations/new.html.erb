@@ -1,0 +1,33 @@
+<% content_for(:title, "Register") %>
+<h2 style="text-align: center">Sign up</h2>
+<div class="row d-flex justify-content-center">
+  <div class="col-md-4 text-center">
+    <div class="container" style="background-color: #DDD">
+    <br/>
+      <%= form_for(resource, as: resource_name, url: registration_path(resource_name)) do |f| %>
+        <%= render "devise/shared/error_messages", resource: resource %>
+
+        <div class="field">
+          <%= f.email_field :email, autofocus: true, autocomplete: "email", placeholder: "Email", class: "form-control" %>
+        </div>
+
+        <div class="field">
+          <% if @minimum_password_length %>
+          <% end %><br />
+          <%= f.password_field :password, autocomplete: "new-password", placeholder: "Password", class: "form-control" %>
+        </div>
+        <br/>
+        <div class="field">
+          <%= f.password_field :password_confirmation, autocomplete: "new-password", placeholder: "Re-enter password", class: "form-control"%>
+        </div>
+        <br/>
+        <div class="actions">
+          <%= f.submit "Sign up", class: "btn btn-success" %>
+        </div>
+      <% end %>
+      <br/>
+      <p>Already a Club Member? <%= render "devise/shared/links" %></p>
+      <br/>
+    </div>
+  </div>
+</div>
