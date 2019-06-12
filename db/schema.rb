@@ -36,8 +36,10 @@ ActiveRecord::Schema.define(version: 2019_06_10_043245) do
     t.string "address"
     t.string "phone"
     t.boolean "admin", default: false
+    t.index ["confirmation_token"], name: "index_users_on_confirmation_token", unique: true
     t.index ["email"], name: "index_users_on_email", unique: true
     t.index ["reset_password_token"], name: "index_users_on_reset_password_token", unique: true
+    t.index ["unlock_token"], name: "index_users_on_unlock_token", unique: true
   end
 
 end
