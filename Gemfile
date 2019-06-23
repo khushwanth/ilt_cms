@@ -3,8 +3,11 @@ git_source(:github) { |repo| "https://github.com/#{repo}.git" }
 
 ruby '2.5.5'
 
-#Auth
+#Authentication
 gem 'devise'
+
+#Authorization
+gem 'pundit'
 
 #design
 gem 'bootstrap', '~> 4.3.1'
