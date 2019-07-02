@@ -10,7 +10,20 @@
   </head>
 
   <body>
-    <%= render 'layouts/alerts' %>
-    <%= yield %>
+    <% if current_user %>
+      <div class="page">
+        <%= render 'layouts/partials/header_row' %>
+        <%= render 'layouts/partials/side_nav' %>
+        <%= render 'layouts/partials/page_topic' %>
+    <% end %>
+    <% unless current_user %>
+      <%= render 'layouts/alerts' %>
+    <% end %>
+      <%= yield %>
+    <% if current_user %>
+        </div>
+        <%= render 'layouts/partials/footer' %>
+      </div>
+    <% end %>
   </body>
 </html>

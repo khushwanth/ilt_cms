@@ -1,0 +1,23 @@
+<!-- Main Navbar-->
+      <header class="header">
+        <nav class="navbar">
+          <div class="container-fluid">
+            <div class="navbar-holder d-flex align-items-center justify-content-between">
+              <!-- Navbar Header-->
+              <div class="navbar-header">
+                <!-- Navbar Brand --><a href="index.html" class="navbar-brand d-none d-sm-inline-block">
+                  <div class="brand-text d-none d-lg-inline-block"><span>Club </span><strong>Management</strong></div>
+                  <div class="brand-text d-none d-sm-inline-block d-lg-none"><strong>CMS</strong></div></a>
+                <!-- Toggle Button--><a id="toggle-btn" href="#" class="menu-btn active"><span></span><span></span><span></span></a>
+              </div>
+              <!-- Navbar Menu -->
+              <ul class="nav-menu list-unstyled d-flex flex-md-row align-items-md-center">
+                <!-- Notifications-->
+                <li class="nav-item"> <a title="Account Settings" id="settings" rel="nofollow" data-target="#" href="#" aria-expanded="false" class="nav-link"><i class="fa fa-cog"></i></a>
+                <!-- Logout -->
+                <li class="nav-item"><span class="d-none d-sm-inline"><%= link_to ' Logout', destroy_user_session_path, method: :delete %></span> <i class="fa fa-sign-out"></i></li>
+              </ul>
+            </div>
+          </div>
+        </nav>
+      </header>
