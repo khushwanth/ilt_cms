@@ -9,11 +9,11 @@
               <p><% if current_user.admin %> Admin <% else %> User <% end %></p>
             </div>
           </div>
-          <!-- Sidebar Navidation Menus--><span class="heading">Main</span>
+          <!-- Sidebar Navidation Menus--><span class="heading">Menu</span>
           <ul class="list-unstyled">
-            <li class="active"><a href="">Home</a></li>
-            <li><a href="tables.html">News</a></li>
-            <li><a href="charts.html">Events</a></li>
-            <li><a href="forms.html">Members</a></li>
+            <li class="active"><%= link_to 'Home', root_path %></li>
+            <li><%= link_to 'News', notifications_path %></li>
+            <li><%= link_to 'Events', events_path %></li>
+            <li><a href="">Members</a></li>
           </ul>
         </nav>

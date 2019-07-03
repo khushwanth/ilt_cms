@@ -1,0 +1,8 @@
+<% content_for(:title, "Create News") %>
+<% content_for(:page_title, "News / Create New") %>
+
+<%= render 'form', notification: @notification %>
+
+<div class="left-col col-lg-6 d-flex align-items-center">
+    <%= link_to 'Back', notifications_path, class: "btn btn-primary" %>
+</div>

@@ -1,0 +1,25 @@
+<% content_for(:title, "News Details") %>
+<% content_for(:page_title, "News / Display Details") %>
+<div class="statistic d-flex align-items-center bg-white has-shadow">
+  <div class="card col-md-12">
+    <div class="card-header">
+      <h4>Title</h4>
+      <%= @notification.title %>
+    </div>
+    <div class="card-body">
+      <h4>News Content</h4>
+      <%= @notification.body %>
+    </div>
+    <div class="card-footer">
+      <h4>Image path</h4>
+      <%= @notification.image_path %>
+    </div>
+  </div>
+</div>
+<div class="left-col col-lg-6 d-flex align-items-center">
+  <% if current_user.admin %>
+    <%= link_to 'Edit', edit_notification_path(@notification), class: "btn btn-warning" %> &nbsp;&nbsp;
+  <% end %>
+    <%= link_to 'Back', notifications_path, class: "btn btn-primary" %>
+</div>
+
