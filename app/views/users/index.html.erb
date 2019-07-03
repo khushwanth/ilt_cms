@@ -12,8 +12,12 @@
                 <thead>
                   <tr>
                     <th>#</th>
-                    <th style="width: 30%">Name</th>
-                    <th style="width: 60%">Email</th>
+                    <th>Name</th>
+                    <th>Email</th>
+                    <th>Designation</th>
+                    <th>Address</th>
+                    <th>Phone</th>
+
                     <th colspan="3">Actions</th>
                   </tr>
                 </thead>
@@ -23,10 +27,18 @@
                       <td><%= user.id %></td>
                       <td><%= user.name %></td>
                       <td><%= user.email %></td>
-                      <td><%= link_to 'Show', user_path, class: "btn-primary small-button-padding" %></td>
+                      <td><%= user.designation %></td>
+                      <td><%= user.address %></td>
+                      <td><%= user.phone %></td>
+                      <td><%= link_to 'Show', user, class: "btn-primary small-button-padding" %></td>
                       <% if current_user.admin %>
-                        <td><%= link_to 'Edit', user_path, class: "btn-warning small-button-padding" %></td>
-                        <td><%= link_to 'Destroy', user, method: :delete, data: { confirm: 'Are you sure?' }, class: "btn-danger small-button-padding" %></td>
+                        <% if current_user.id == user.id %>
+                          <td><%= link_to 'Edit', edit_user_registration_path, class: "btn-warning small-button-padding" %></td>
+                          <td> </td>
+                        <% else %>
+                          <td><%= link_to 'Edit', edit_user_path(user), class: "btn-warning small-button-padding" %></td>
+                          <td><%= link_to 'Destroy', user, method: :delete, data: { confirm: 'Are you sure?' }, class: "btn-danger small-button-padding" %></td>
+                        <% end %>
                       <% end %>
                     </tr>
                   <% end %>

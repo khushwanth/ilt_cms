@@ -1,1 +1,19 @@
-<P>Hello</p>
+<% content_for(:title, "Member Details") %>
+<% content_for(:page_title, "Member / Details") %>
+
+<!-- Client Profile -->
+                <div class="col-lg-4">
+                  <div class="client card">
+                    <div class="card-close">
+                    </div>
+                    <div class="card-body text-center">
+                        <div class="client-avatar"><%= image_tag('avatar.png', class: "img-fluid rounded-circle", alt: "user_dp", title: "User Profile Image") %>
+                        </div>
+                      </div>
+                      <div class="client-title text-center">
+                        <h3><%= @user.name %></h3><span><%= @user.email %></span><br/><span><%= @user.designation %></span><span><%= @user.address %></span><span>Phone: <%= @user.phone %></span>
+                        <br/>
+                      </div>
+                    </div>
+                  </div>
+                </div>

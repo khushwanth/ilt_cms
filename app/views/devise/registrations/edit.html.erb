@@ -17,7 +17,7 @@
 
                         <div class="form-group row">
                           <strong><%= f.label :email %></strong><br />
-                          <%= f.email_field :email, autocomplete: "email", class: "form-control form-control-success" %>
+                          <%= f.email_field :email, autocomplete: "email", class: "form-control form-control-success", disabled: true %>
                         </div>
   
                         <% if devise_mapping.confirmable? && resource.pending_reconfirmation? %>
@@ -77,6 +77,8 @@
               </div>
             </div>
           </section>
+
+
 
 
 

@@ -7,6 +7,5 @@ Rails.application.routes.draw do
 
   match 'members', to: 'users#index', via: 'get'
 
-  match 'user', to: 'users#show', via: 'get'
-  match 'user_edit', to: 'users#edit', via: 'get'
+  resources :users
 end

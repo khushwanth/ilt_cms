@@ -1,3 +1,46 @@
-<% content_for(:title, "User Settings") %>
+<% content_for(:title, "Account Settings") %>
 <% content_for(:page_title, "User Account / Settings") %>
+
+<section class="client no-padding-top">
+            <div class="container-fluid">
+              <div class="row">
+                <div class="col-lg-12">
+                  <div class="work-amount card">
+                    <div class="card-body">
+                      <%= form_tag user_path do %>
+                        <label>Name</label><br>
+                        <%= text_field_tag :name, value: @user.name %><br>
+
+                        <label>Email</label><br>
+                        <%= text_field_tag :email, disabled: true %><br>
+
+                        <label>Address</label><br>
+                        <%= text_area_tag :address %><br>
+
+                        <label>Phone</label><br>
+                        <%= text_field_tag :phone %><br>
+
+                        <label>Designation</label><br>
+                        <%= text_field_tag :designation %><br>
+
+                        <%= submit_tag "Submit Article" %>
+                      <% end %>
+                    </div>
+                    <div class="card-footer">
+                        <%= link_to "Back", :back, class: "btn btn-primary" %>
+                      </div>
+                    </div>  
+                  </div>
+                </div>
+              </div>
+            </div>
+          </section>
+
+
+
+
+
+
+
+
 
