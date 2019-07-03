@@ -11,17 +11,22 @@
                         <%= render "devise/shared/error_messages", resource: resource %>
 
                         <div class="form-group row">
-                          <strong><%= f.label :email %></strong><br />
-                          <%= f.email_field :email, autofocus: true, autocomplete: "email", class: "form-control form-control-success" %>
+                          <strong><%= f.label :name %></strong><br />
+                          <%= f.text_field :name, autofocus: true, class: "form-control form-control-success" %>
                         </div>
 
+                        <div class="form-group row">
+                          <strong><%= f.label :email %></strong><br />
+                          <%= f.email_field :email, autocomplete: "email", class: "form-control form-control-success" %>
+                        </div>
+  
                         <% if devise_mapping.confirmable? && resource.pending_reconfirmation? %>
                           <div>Currently waiting confirmation for: <%= resource.unconfirmed_email %></div>
                         <% end %>
 
                         <div class="form-group row">
                           <strong><%= f.label :password %> <i>(leave blank if you don't want to change your password)</i></strong><br />
-                          <%= f.password_field :password, autocomplete: "new-password", class: "form-control form-control-success" %>
+                          <%= f.password_field :password, autocomplete: "new-password", class: "form-control form-contr ol-success" %>
                           <% if @minimum_password_length %>
                             <br />
                             <em><%= @minimum_password_length %> characters minimum</em>
@@ -36,6 +41,21 @@
                         <div class="form-group row">
                           <strong><%= f.label :current_password %> <i>(we need your current password to confirm your changes)</i></strong><br />
                           <%= f.password_field :current_password, autocomplete: "current-password", class: "form-control form-control-success" %>
+                        </div>
+
+                        <div class="form-group row">
+                          <strong><%= f.label :designation %></strong><br />
+                          <%= f.text_field :designation, class: "form-control form-control-success" %>
+                        </div>
+
+                        <div class="form-group row">
+                          <strong><%= f.label :address %></strong><br />
+                          <%= f.text_area :address, class: "form-control form-control-success" %>
+                        </div>
+
+                        <div class="form-group row">
+                          <strong><%= f.label :phone %></strong><br />
+                          <%= f.text_field :phone, class: "form-control form-control-success" %>
                         </div>
 
                         <div class="actions">
