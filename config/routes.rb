@@ -5,5 +5,8 @@ Rails.application.routes.draw do
   devise_for :users
   # For details on the DSL available within this file, see http://guides.rubyonrails.org/routing.html
 
-  match 'user_settings', to: 'users#edit', via: 'get'
+  match 'members', to: 'users#index', via: 'get'
+
+  match 'user', to: 'users#show', via: 'get'
+  match 'user_edit', to: 'users#edit', via: 'get'
 end
