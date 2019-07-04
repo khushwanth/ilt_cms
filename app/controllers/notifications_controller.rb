@@ -23,15 +23,17 @@ class NotificationsController < ApplicationController
 
   # POST /notifications
   # POST /notifications.json
-  def create
+  def create    
     @notification = Notification.new(notification_params)
+    authorize(Notification)
 
     respond_to do |format|
       if @notification.save
         format.html { redirect_to @notification, notice: 'Notification was successfully created.' }
         format.json { render :show, status: :created, location: @notification }
       else
-        format.html { render :new }
+        binding.pry
+        format.html { redirect_to @notification, notice: 'Notification was NOT created.' }
         format.json { render json: @notification.errors, status: :unprocessable_entity }
       end
     end
