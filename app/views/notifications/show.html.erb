@@ -12,7 +12,11 @@
     </div>
     <div class="card-footer">
       <h4>Image path</h4>
-      <%= @notification.image_path %>
+      <% if(@notification.flyer.attached? ) %>
+        <img src="<%= (url_for(@notification.flyer)) %>"/>
+      <% else %>
+        <p>No Image Attached for the event</p>
+      <% end %>
     </div>
   </div>
 </div>

@@ -18,20 +18,29 @@
           <div class="card">
             <div class="card-body">
               <div class="form-group row">
-                <%= form.label :title %>
+                <strong><%= form.label :title %></strong>
                 <%= form.text_field :title, class: "form-control form-control-success" %>
               </div>
 
               <div class="form-group row">
-                <%= form.label :body %>
+                <strong><%= form.label :body %></strong>
                 <%= form.text_area :body, class: "form-control form-control-success" %>
               </div>
 
               <div class="form-group row">
-                <%= form.label :image_path %>
-                <%= form.text_field :image_path, class: "form-control form-control-success" %>
+                <% if(@notification.flyer.attached? ) %>
+                  <strong><%= form.label "Change Event Flyer/Banner" %><span></strong>
+                  <br/>
+                  <div class="row">
+                    <img src="<%= (url_for(@notification.flyer)) %>" width="100" height="50"/>
+                  </div>
+                <% else %>
+                  <strong><%= form.label "Upload Event Flyer/Banner" %><span></strong>
+                  <br/>
+                <% end %>
+                <%= form.file_field :flyer, class: "btn form-control form-control-success" %>
               </div>
-
+              <br/>
               <div>
                 <%= form.submit %>
               </div>
