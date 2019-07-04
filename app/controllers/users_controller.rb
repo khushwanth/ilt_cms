@@ -8,6 +8,9 @@ before_action :set_user, only: [:show, :edit, :update, :destroy]
     end
 
     def update
+      
+      binding.pry
+    
       respond_to do |format|
         if @user.update(user_params)
           format.html { redirect_to @user, notice: 'Notification was successfully updated.' }

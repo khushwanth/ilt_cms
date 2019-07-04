@@ -4,15 +4,15 @@ class NotificationPolicy < ApplicationPolicy
     end
 
     def create?
-        return true if current_user.admin
+       return true if user.admin
     end
-
+ 
     def update?
-        return true if current_user.admin
+        return true if user.admin
     end
 
-    def destroy?
-        return true if current_user.admin
+   def destroy?
+       return true if user.admin
     end
 
     private
@@ -20,4 +20,10 @@ class NotificationPolicy < ApplicationPolicy
         def notification
             record
         end
+
+    class Scope < Scope
+        def resolve
+            scope.all
+        end
+    end
 end
