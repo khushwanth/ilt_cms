@@ -4,7 +4,7 @@ class NotificationPolicy < ApplicationPolicy
     end
 
     def create?
-        return true if current_user.admin
+        user.admin?
     end
 
     def update?
