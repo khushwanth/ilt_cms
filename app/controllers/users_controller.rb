@@ -9,8 +9,6 @@ before_action :set_user, only: [:show, :edit, :update, :destroy]
 
     def update
       
-      binding.pry
-    
       respond_to do |format|
         if @user.update(user_params)
           format.html { redirect_to @user, notice: 'Notification was successfully updated.' }
@@ -27,6 +25,7 @@ before_action :set_user, only: [:show, :edit, :update, :destroy]
     end
 
     def destroy
+      
         @user.destroy
         respond_to do |format|
             format.html { redirect_to members_path, notice: 'User was successfully destroyed.' }

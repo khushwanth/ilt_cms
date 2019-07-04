@@ -42,6 +42,7 @@ class NotificationsController < ApplicationController
   # PATCH/PUT /notifications/1
   # PATCH/PUT /notifications/1.json
   def update
+    authorize(Notification)
     respond_to do |format|
       if @notification.update(notification_params)
         format.html { redirect_to @notification, notice: 'Notification was successfully updated.' }
@@ -56,6 +57,7 @@ class NotificationsController < ApplicationController
   # DELETE /notifications/1
   # DELETE /notifications/1.json
   def destroy
+    authorize(Notification)
     @notification.destroy
     respond_to do |format|
       format.html { redirect_to notifications_url, notice: 'Notification was successfully destroyed.' }

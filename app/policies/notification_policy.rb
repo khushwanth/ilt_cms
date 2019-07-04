@@ -8,11 +8,11 @@ class NotificationPolicy < ApplicationPolicy
     end
  
     def update?
-        return true if user.admin
+        user.admin?
     end
 
    def destroy?
-       return true if user.admin
+       user.admin?
     end
 
     private

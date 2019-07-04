@@ -12,7 +12,7 @@ rescue_from Pundit::NotAuthorizedError, with: :user_not_authorized
     end
 
     def user_not_authorized
-        redirect_to @notification, alert: 'You are NOT authorized to post News.' 
+        redirect_to @notification, alert: 'You are NOT authorized for this action.' 
     end
 
 end
