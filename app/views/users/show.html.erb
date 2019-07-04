@@ -13,7 +13,14 @@
                       <div class="client-title text-center">
                         <h3><%= @user.name %></h3><span><%= @user.email %></span><br/><span><%= @user.designation %></span><span><%= @user.address %></span><span>Phone: <%= @user.phone %></span>
                         <br/>
+                        <% if current_user.admin %>
+                          <%= link_to 'Edit', edit_user_path(@user), class: "btn btn-warning" %> &nbsp;&nbsp;
+                        <% end %>
+                          <%= link_to 'Back', notifications_path, class: "btn btn-primary" %>
                       </div>
+                      <br/>
                     </div>
                   </div>
                 </div>
+
+  
