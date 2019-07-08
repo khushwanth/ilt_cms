@@ -1,7 +1,85 @@
-<p id="notice"><%= notice %></p>
+<% content_for(:title, "Events") %>
+<% content_for(:page_title, "Events") %>
 
-<h1>Events</h1>
+<div class="container">
+  <ul class="nav nav-tabs nav-justified">
+    <li class="active"><a data-toggle="tab" href="#current">Current &nbsp;</a></li>
+    <li><a data-toggle="tab" href="#past">Past &nbsp;</a></li>
+    <li><a data-toggle="tab" href="#upcoming">Upcoming &nbsp;</a></li>
+    <li><a data-toggle="tab" href="#going">Going &nbsp;</a></li>
+  </ul>
 
+  <div class="tab-content">
+    <div id="current" class="tab-pane fade in active">
+      <% @present.each do |event| %> 
+        <div class="container">
+          <div class="row">
+            <div class="card col-md-12">
+              <div class="card-body">
+                <h5 class="card-title"><%= event.title %></h5>
+                <h6 class="card-subtitle mb-2 text-muted"><span>Date: <%= event.event_date %></span><br/>
+                <span>Starts at: <%= event.start_time %></span><br/>
+                <span>Ends at: <%= event.end_time %></span><br/>
+                <span>Venue: <%= event.venue %></span></h6>
+              </div>
+              <div class="card-footer">
+                <button class="btn btn-success">View Event Details</button>
+              </div>
+            </div>
+          </div>
+        </div>
+      <% end %>
+    </div>
+
+    <div id="past" class="tab-pane fade">
+      <% @past.each do |event| %>
+        <div class="container">
+          <div class="row">
+            <div class="card col-md-12">
+              <div class="card-body">
+                <h5 class="card-title"><%= event.title %></h5>
+                <h6 class="card-subtitle mb-2 text-muted"><span>Date: <%= event.event_date %></span><br/>
+                <span>Starts at: <%= event.start_time %></span><br/>
+                <span>Ends at: <%= event.end_time %></span><br/>
+                <span>Venue: <%= event.venue %></span></h6>
+              </div>
+              <div class="card-footer">
+                <button class="btn btn-success">View Event Details</button>
+              </div>
+            </div>
+          </div>
+        </div>
+      <% end %>
+    </div>
+
+    <div id="upcoming" class="tab-pane fade">
+      <% @future.each do |event| %>
+        <div class="container">
+          <div class="row">
+            <div class="card col-md-12">
+              <div class="card-body">
+                <h5 class="card-title"><%= event.title %></h5>
+                <h6 class="card-subtitle mb-2 text-muted"><span>Date: <%= event.event_date %></span><br/>
+                <span>Starts at: <%= event.start_time %></span><br/>
+                <span>Ends at: <%= event.end_time %></span><br/>
+                <span>Venue: <%= event.venue %></span></h6>
+              </div>
+              <div class="card-footer">
+                <button class="btn btn-success">View Event Details</button>
+              </div>
+            </div>
+          </div>
+        </div>
+      <% end %>
+    </div>
+
+    <div id="going" class="tab-pane fade">
+
+    </div>
+  </div>
+</div>
+
+<!-- 
 <table>
   <thead>
     <tr>
@@ -15,7 +93,7 @@
   </thead>
 
   <tbody>
-    <% @events.each do |event| %>
+    <% @future.each do |event| %>
       <tr>
         <td><%= event.title %></td>
         <td><%= event.event_date %></td>
@@ -31,5 +109,7 @@
 </table>
 
 <br>
+-->
+
 
 <%= link_to 'New Event', new_event_path %>

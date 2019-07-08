@@ -5,6 +5,22 @@ class EventsController < ApplicationController
   # GET /events.json
   def index
     @events = Event.all
+    @past = Array.new
+    @future = Array.new
+    @present = Array.new
+    @events.each do |event|
+      if Time.parse(event.event_date.strftime("%Y-%m-%d")).past?
+        if Date.today.strftime("%Y-%m-%d") == event.event_date.strftime("%Y-%m-%d")
+          @present.append(event)
+        else
+          @past.append(event)
+        end
+      elsif Time.parse(event.event_date.strftime("%Y-%m-%d")).future?
+        @future.append(event)
+      else
+        @present.append(event)
+      end
+    end
   end
 
   # GET /events/1
