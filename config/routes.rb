@@ -8,4 +8,6 @@ Rails.application.routes.draw do
   match 'members', to: 'users#index', via: 'get'
 
   resources :users
+  resources :user_events
+
 end

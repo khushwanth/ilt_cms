@@ -25,5 +25,7 @@
   <%= @event.venue %>
 </p>
 
+<%= link_to "Join this Event", user_events_path(uid: current_user.id, eid: @event.id) %>
+
 <%= link_to 'Edit', edit_event_path(@event) %> |
 <%= link_to 'Back', events_path %>

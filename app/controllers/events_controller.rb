@@ -5,9 +5,12 @@ class EventsController < ApplicationController
   # GET /events.json
   def index
     @events = Event.all
+    @user_events = UserEvent.all
     @past = Array.new
     @future = Array.new
     @present = Array.new
+    @joined = Array.new
+    
     @events.each do |event|
       if Time.parse(event.event_date.strftime("%Y-%m-%d")).past?
         if Date.today.strftime("%Y-%m-%d") == event.event_date.strftime("%Y-%m-%d")
@@ -21,6 +24,7 @@ class EventsController < ApplicationController
         @present.append(event)
       end
     end
+    binding.pry
   end
 
   # GET /events/1

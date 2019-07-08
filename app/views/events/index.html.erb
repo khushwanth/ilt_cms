@@ -23,7 +23,7 @@
                 <span>Venue: <%= event.venue %></span></h6>
               </div>
               <div class="card-footer">
-                <button class="btn btn-success">View Event Details</button>
+                <%= link_to 'View Details', event, class: "btn btn-primary" %>
               </div>
             </div>
           </div>
@@ -44,7 +44,7 @@
                 <span>Venue: <%= event.venue %></span></h6>
               </div>
               <div class="card-footer">
-                <button class="btn btn-success">View Event Details</button>
+                <%= link_to 'View Details', event, class: "btn btn-primary" %>
               </div>
             </div>
           </div>
@@ -65,7 +65,7 @@
                 <span>Venue: <%= event.venue %></span></h6>
               </div>
               <div class="card-footer">
-                <button class="btn btn-success">View Event Details</button>
+                <%= link_to 'View Details', event, class: "btn btn-primary" %>
               </div>
             </div>
           </div>
@@ -74,7 +74,24 @@
     </div>
 
     <div id="going" class="tab-pane fade">
-
+      <% @joined.each do |event| %>
+        <div class="container">
+          <div class="row">
+            <div class="card col-md-12">
+              <div class="card-body">
+                <h5 class="card-title"><%= event.title %></h5>
+                <h6 class="card-subtitle mb-2 text-muted"><span>Date: <%= event.event_date %></span><br/>
+                <span>Starts at: <%= event.start_time %></span><br/>
+                <span>Ends at: <%= event.end_time %></span><br/>
+                <span>Venue: <%= event.venue %></span></h6>
+              </div>
+              <div class="card-footer">
+                <%= link_to 'View Details', event, class: "btn btn-primary" %>
+              </div>
+            </div>
+          </div>
+        </div>
+      <% end %>
     </div>
   </div>
 </div>
