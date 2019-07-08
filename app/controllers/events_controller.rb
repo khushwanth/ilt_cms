@@ -24,7 +24,6 @@ class EventsController < ApplicationController
         @present.append(event)
       end
     end
-    binding.pry
   end
 
   # GET /events/1
