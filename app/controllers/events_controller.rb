@@ -4,26 +4,23 @@ class EventsController < ApplicationController
   # GET /events
   # GET /events.json
   def index
-    @events = Event.all
-    @user_events = UserEvent.all
-    @past = Array.new
-    @future = Array.new
-    @present = Array.new
-    @joined = Array.new
-    
-    @events.each do |event|
-      if Time.parse(event.event_date.strftime("%Y-%m-%d")).past?
-        if Date.today.strftime("%Y-%m-%d") == event.event_date.strftime("%Y-%m-%d")
-          @present.append(event)
-        else
-          @past.append(event)
-        end
-      elsif Time.parse(event.event_date.strftime("%Y-%m-%d")).future?
-        @future.append(event)
-      else
-        @present.append(event)
-      end
-    end
+    @past = Event.where("event_date < ?", Date.today)
+    @present = Event.where("event_date = ?", Date.today)
+    @future = Event.where("event_date > ?", Date.today)
+    @going = current_user.events
+    # @events.each do |event|
+    #   if Time.parse(event.event_date.strftime("%Y-%m-%d")).past?
+    #     if Date.today.strftime("%Y-%m-%d") == event.event_date.strftime("%Y-%m-%d")
+    #       @present.append(event)
+    #     else
+    #       @past.append(event)
+    #     end
+    #   elsif Time.parse(event.event_date.strftime("%Y-%m-%d")).future?
+    #     @future.append(event)
+    #   else
+    #     @present.append(event)
+    #   end
+    # end
   end
 
   # GET /events/1

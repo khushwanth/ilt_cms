@@ -24,8 +24,25 @@
   <strong>Venue:</strong>
   <%= @event.venue %>
 </p>
+<% unless Time.parse(@event.event_date.strftime("%Y-%m-%d")).past? || @event.users.include?(current_user) %>
+  <%= link_to "Join this Event", user_events_path(uid: current_user.id, eid: @event.id), class: "btn btn-success" %>
+<% end %>
 
-<%= link_to "Join this Event", user_events_path(uid: current_user.id, eid: @event.id) %>
-
+<% if @event.users.include?(current_user) %>
+  <%= link_to "Withdraw from this Event", new_user_event_path(uid: current_user.id, eid: @event.id), class: "btn btn-danger" %>
+<% end %>
+<% if current_user.admin %>
+  <table class="table">
+  <% @event.users.each do |joined_user| %>
+    <tr>
+      <td><%= joined_user.email %></td>
+      <td><%= joined_user.name %></td>
+      <td><%= joined_user.address %></td>
+      <td><%= joined_user.phone %></td>
+      <td><%= link_to 'Remove', new_user_event_path(uid: joined_user.id, eid: @event.id), data: { confirm: 'Are you sure?' }, class: "btn-danger small-button-padding" %></td></td>
+    </tr>
+  <% end %>
+  </table>
+<% end %>
 <%= link_to 'Edit', edit_event_path(@event) %> |
 <%= link_to 'Back', events_path %>
