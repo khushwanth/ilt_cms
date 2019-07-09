@@ -2,7 +2,7 @@ require 'rails_helper'
 
 RSpec.describe EventsController, type: :controller do
    describe 'Event controller request specs' do
-   login_user
+      login_user
   
       context 'GET #index' do 
          it 'should success and render to index page' do
