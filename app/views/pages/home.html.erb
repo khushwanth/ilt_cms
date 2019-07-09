@@ -24,7 +24,7 @@
                     <div class="icon bg-violet"><i class="icon-user"></i></div>
                     <div class="title"><span>Total<br>Members</span>
                     </div>
-                    <div class="number"><strong>25</strong></div>
+                    <div class="number"><strong><%= @members %></strong></div>
                   </div>
                 </div>
                 <!-- Item -->
@@ -33,7 +33,7 @@
                     <div class="icon bg-red"><i class="icon-padnote"></i></div>
                     <div class="title"><span>All<br>News</span>
                     </div>
-                    <div class="number"><strong>70</strong></div>
+                    <div class="number"><strong><%= @news %></strong></div>
                   </div>
                 </div>
                 <!-- Item -->
@@ -42,7 +42,7 @@
                     <div class="icon bg-green"><i class="icon-bill"></i></div>
                     <div class="title"><span>Total<br>Events</span>
                     </div>
-                    <div class="number"><strong>40</strong></div>
+                    <div class="number"><strong><%= @events %></strong></div>
                   </div>
                 </div>
                 <!-- Item -->
@@ -51,7 +51,12 @@
                     <div class="icon bg-orange"><i class="icon-check"></i></div>
                     <div class="title"><span>Next<br>Event</span>
                     </div>
-                    <div class="number"><strong>3/07/19</strong></div>
+                    <div class="number">
+                      <strong><span style="font-size: 15px">
+                        <%= link_to @next_event.title, @next_event %>
+                        <br><%= @next_event.event_date %>
+                      </span></strong>
+                    </div>
                   </div>
                 </div>
               </div>
@@ -63,30 +68,39 @@
             <div class="container-fluid">
               <div class="row bg-white has-shadow">
                 <!-- Item -->
-                <div class="col-xl-4 col-sm-6">
+                <div class="col-xl-3 col-sm-6">
                   <div class="item d-flex align-items-center">
                     <div class="icon bg-violet"><i class="icon-user"></i></div>
-                    <div class="title"><a href="#">Manage Members</a>
+                    <div class="title"><%= link_to 'Manage Members', members_path %>
                     </div>
                   </div>
                 </div>
                 <!-- Item -->
-                <div class="col-xl-4 col-sm-6">
+                <div class="col-xl-3 col-sm-6">
                   <div class="item d-flex align-items-center">
                     <div class="icon bg-red"><i class="icon-padnote"></i></div>
-                    <div class="title"><a href="#">Broadcast News</a>
+                    <div class="title"><%= link_to 'Broadcast News', notifications_path %>
                     </div>
                   </div>
                 </div>
                 <!-- Item -->
-                <div class="col-xl-4 col-sm-6">
+                <div class="col-xl-3 col-sm-6">
                   <div class="item d-flex align-items-center">
                     <div class="icon bg-green"><i class="icon-bill"></i></div>
-                    <div class="title"><a href="#">Add a new Event</a>
+                    <div class="title"><%= link_to 'Add an Event', events_path %>
                     </div>
                   </div>
                 </div>
                 <!-- Item -->
+                <!-- Item -->
+                <div class="col-xl-3 col-sm-6">
+                  <div class="item d-flex align-items-center">
+                    <div class="icon bg-orange"><i class="icon-check"></i></div>
+                    <div class="title"><span>Total<br>Admins</span>
+                    </div>
+                    <div class="number"><strong><%= @admins %></strong></div>
+                  </div>
+                </div>
               </div>
             </div>
           </section>

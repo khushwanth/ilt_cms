@@ -32,7 +32,6 @@ class NotificationsController < ApplicationController
         format.html { redirect_to @notification, notice: 'Notification was successfully created.' }
         format.json { render :show, status: :created, location: @notification }
       else
-        binding.pry
         format.html { redirect_to @notification, notice: 'Notification was NOT created.' }
         format.json { render json: @notification.errors, status: :unprocessable_entity }
       end
@@ -60,7 +59,7 @@ class NotificationsController < ApplicationController
     authorize(Notification)
     @notification.destroy
     respond_to do |format|
-      format.html { redirect_to notifications_url, notice: 'Notification was successfully destroyed.' }
+      format.html { redirect_to notifications_url, notice: 'News successfully removed.' }
       format.json { head :no_content }
     end
   end

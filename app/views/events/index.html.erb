@@ -3,7 +3,7 @@
 
 <div class="container">
   <ul class="nav nav-tabs nav-justified">
-    <li class="active"><a data-toggle="tab" href="#current">Current &nbsp;</a></li>
+    <li class="active"><a data-toggle="tab" href="#current">Happening &nbsp;</a></li>
     <li><a data-toggle="tab" href="#past">Past &nbsp;</a></li>
     <li><a data-toggle="tab" href="#upcoming">Upcoming &nbsp;</a></li>
     <li><a data-toggle="tab" href="#going">Going &nbsp;</a></li>
@@ -66,6 +66,9 @@
               </div>
               <div class="card-footer">
                 <%= link_to 'View Details', event, class: "btn btn-primary" %>
+                <% if current_user.admin %>
+                  <%= link_to 'Edit', edit_event_path(event), class: "btn btn-warning" %>
+                <% end %>
               </div>
             </div>
           </div>
@@ -87,6 +90,9 @@
               </div>
               <div class="card-footer">
                 <%= link_to 'View Details', event, class: "btn btn-primary" %>
+                <% if current_user.admin %>
+                  <%= link_to 'Edit', edit_event_path(event), class: "btn btn-warning" %>
+                <% end %>
               </div>
             </div>
           </div>
@@ -127,5 +133,6 @@
 <br>
 -->
 
-
-<%= link_to 'New Event', new_event_path %>
+<% if current_user.admin %>
+  <%= link_to 'New Event', new_event_path %>
+<% end %>

@@ -12,6 +12,5 @@ class UserEventsController < ApplicationController
         if UsersEvent.destroy(@withdraw_user.first.id)
             redirect_to events_path
         end
-
     end
 end
