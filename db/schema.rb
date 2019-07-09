@@ -54,6 +54,13 @@ ActiveRecord::Schema.define(version: 2019_07_08_103612) do
     t.datetime "updated_at", null: false
   end
 
+  create_table "user_events", force: :cascade do |t|
+    t.string "uid"
+    t.string "eid"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+  end
+
   create_table "users", force: :cascade do |t|
     t.string "email", default: "", null: false
     t.string "encrypted_password", default: "", null: false

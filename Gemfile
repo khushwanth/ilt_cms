@@ -17,6 +17,7 @@ gem 'font-awesome-rails'
 
 gem 'pry'
 
+
 # Bundle edge Rails instead: gem 'rails', github: 'rails/rails'
 gem 'rails', '~> 5.2.3'
 # Use postgresql as the database for Active Record
@@ -53,6 +54,11 @@ group :development, :test do
   #RSpec
   gem 'rspec-rails', '~> 3.4'
   gem 'pry'
+
+  gem 'factory_girl_rails'
+  gem 'rails-controller-testing'
+  gem 'database_cleaner'
+  gem 'faker'
 
   # Call 'byebug' anywhere in the code to stop execution and get a debugger console
   gem 'byebug', platforms: [:mri, :mingw, :x64_mingw]
