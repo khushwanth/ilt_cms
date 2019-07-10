@@ -1,51 +1,45 @@
 <% content_for(:title, "Events | View Detail") %>
 <% content_for(:page_title, "Events / View Detail ") %>
 
-
-
-<p>
-  <strong>Title:</strong>
-  <%= @event.title %>
-</p>
-
-<p>
-  <strong>Event date:</strong>
-  <%= @event.event_date %>
-</p>
-
-<p>
-  <strong>Start time:</strong>
-  <%= @event.start_time %>
-</p>
-
-<p>
-  <strong>End time:</strong>
-  <%= @event.end_time %>
-</p>
-
-<p>
-  <strong>Venue:</strong>
-  <%= @event.venue %>
-</p>
-<% unless Time.parse(@event.event_date.strftime("%Y-%m-%d")).past? || @event.users.include?(current_user) %>
-  <%= link_to "Join this Event", user_events_path(uid: current_user.id, eid: @event.id), class: "btn btn-success" %>
-<% end %>
-
-<% if @event.users.include?(current_user) %>
-  <%= link_to "Withdraw from this Event", new_user_event_path(uid: current_user.id, eid: @event.id), class: "btn btn-danger" %>
-<% end %>
-<% if current_user.admin %>
-  <table class="table">
-  <% @event.users.each do |joined_user| %>
-    <tr>
-      <td><%= joined_user.email %></td>
-      <td><%= joined_user.name %></td>
-      <td><%= joined_user.address %></td>
-      <td><%= joined_user.phone %></td>
-      <td><%= link_to 'Remove', new_user_event_path(uid: joined_user.id, eid: @event.id), data: { confirm: 'Are you sure?' }, class: "btn-danger small-button-padding" %></td></td>
-    </tr>
-  <% end %>
-  </table>
-<% end %>
-<%= link_to 'Edit', edit_event_path(@event) %> |
-<%= link_to 'Back', events_path %>
+<section class="table">
+              <div class="container">
+                <div class="col-md-12">
+                  <div class="client card">
+                    <div class="card-close">
+                    </div>
+                    <div class="card-body text-center">
+                      <div class="client-avatar"><%= image_tag('auth-background.png', class: "img-fluid", alt: "user_dp", title: "User Profile Image") %>
+                      </div>
+                      <div class="client-title text-center">
+                        <h3><%= @event.title %></h3><span>On <%= @event.event_date %></span><br/><span>Starts at: <%= @event.start_time.strftime("%H:%M:%S") %></span><span>Ends at: <%= @event.end_time.strftime("%H:%M:%S") %></span><span>Venue: <%= @event.venue %></span>
+                        <br/>
+                        <% if current_user.admin %>
+                          <%= link_to 'Edit', edit_event_path(@event), class: "btn btn-warning" %> &nbsp;&nbsp;
+                        <% end %>
+                          <%= link_to 'Back', events_path, class: "btn btn-primary" %>
+                      </div>
+                    
+                      <% unless Time.parse(@event.event_date.strftime("%Y-%m-%d")).past? || @event.users.include?(current_user) %>
+                        <%= link_to "Join this Event", user_events_path(uid: current_user.id, eid: @event.id), class: "btn btn-success" %>
+                      <% end %>
+                      <br/>
+                      <% if @event.users.include?(current_user) %>
+                        <%= link_to "Withdraw from this Event", new_user_event_path(uid: current_user.id, eid: @event.id), class: "btn btn-danger" %>
+                      <% end %>
+                      <br/><br/>
+                      <h4>Participants of this event (only visible to admin)</h4>
+                      <% if current_user.admin %>
+                        <table class="table">
+                        <% @event.users.each do |joined_user| %>
+                          <tr>
+                            <td><%= joined_user.email %></td>
+                            <td><%= joined_user.name %></td>
+                            <td><%= joined_user.address %></td>
+                            <td><%= joined_user.phone %></td>
+                            <td><%= link_to 'Remove', new_user_event_path(uid: joined_user.id, eid: @event.id), data: { confirm: 'Are you sure?' }, class: "btn-danger small-button-padding" %></td></td>
+                          </tr>
+                        <% end %>
+                        </table>
+                      <% end %>
+<%= link_to 'Edit', edit_event_path(@event), class: "btn btn-warning" %> &nbsp;
+<%= link_to 'Back', events_path, class: "btn btn-primary" %>

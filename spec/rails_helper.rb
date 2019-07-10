@@ -74,4 +74,11 @@ RSpec.configure do |config|
     p ""
     # p "Time to execute all test cases => #{((@end_time - @start_time)/60).round(2)} mins"
   end
+
+  Shoulda::Matchers.configure do |config|
+    config.integrate do |with|
+    with.test_framework :rspec
+    with.library :rails
+    end
+  end
 end
