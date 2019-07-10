@@ -20,7 +20,7 @@
                         <% end%>
                           <%= link_to 'Back', events_path, class: "btn btn-primary" %>
                       </div>
-                    
+                      <br/>
                       <% unless Time.parse(@event.event_date.strftime("%Y-%m-%d")).past? || @event.users.include?(current_user) %>
                         <%= link_to "Join this Event", user_events_path(uid: current_user.id, eid: @event.id), class: "btn btn-success" %>
                       <% end %>

@@ -5,5 +5,5 @@ class User < ApplicationRecord
          :recoverable, :rememberable, :validatable, :confirmable
   has_one_attached :avatar
   has_many :users_events
-  has_many :events, through: :users_events
+  has_many :events, through: :users_events, dependent: :destroy
 end

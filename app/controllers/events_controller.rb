@@ -76,11 +76,11 @@ class EventsController < ApplicationController
   # DELETE /events/1.json
   def destroy
     authorize(Event)
-    @event.destroy
-    respond_to do |format|
-      format.html { redirect_to events_url, notice: 'Event successfully removed.' }
-      format.json { head :no_content }
-    end
+      @event.destroy
+      respond_to do |format|
+        format.html { redirect_to events_url, notice: 'Event successfully removed.' }
+        format.json { head :no_content }
+      end
   end
 
   private
