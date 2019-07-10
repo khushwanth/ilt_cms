@@ -80,6 +80,9 @@
                   <%= link_to 'Edit', edit_event_path(event), class: "btn btn-warning" %>
                   <%= link_to 'Remove', event, method: :delete, data: { confirm: 'Are you sure?' }, class: "btn btn-danger"%>
                 <% end %>
+                <% if @going.include?(event)%>
+                  <span class="success" style="color: green"> You are going to this event</span>
+                <% end %>
               </div>
             </div>
           </div>
