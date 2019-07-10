@@ -8,14 +8,16 @@
                     <div class="card-close">
                     </div>
                     <div class="card-body text-center">
-                      <div class="client-avatar"><%= image_tag('auth-background.png', class: "img-fluid", alt: "user_dp", title: "User Profile Image") %>
+                      <div class="client-avatar"><%= image_tag('auth-background.png', class: "img-thumbnail", alt: "event_flyer", title: "Event Banner") %>
                       </div>
                       <div class="client-title text-center">
                         <h3><%= @event.title %></h3><span>On <%= @event.event_date %></span><br/><span>Starts at: <%= @event.start_time.strftime("%H:%M:%S") %></span><span>Ends at: <%= @event.end_time.strftime("%H:%M:%S") %></span><span>Venue: <%= @event.venue %></span>
                         <br/>
-                        <% if current_user.admin %>
-                          <%= link_to 'Edit', edit_event_path(@event), class: "btn btn-warning" %> &nbsp;&nbsp;
-                        <% end %>
+                        <% if Time.parse(@event.event_date.strftime("%Y-%m-%d")) > Date.today %>
+                          <% if current_user.admin %>
+                            <%= link_to 'Edit', edit_event_path(@event), class: "btn btn-warning" %> &nbsp;&nbsp;
+                          <% end %>
+                        <% end%>
                           <%= link_to 'Back', events_path, class: "btn btn-primary" %>
                       </div>
                     

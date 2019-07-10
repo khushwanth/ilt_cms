@@ -18,7 +18,7 @@
       <br/><br/>
       <h4>News Content</h4>
       <% if(@notification.flyer.attached? ) %>
-        <img src="<%= (url_for(@notification.flyer)) %>"/>
+        <img src="<%= (url_for(@notification.flyer)) %>" class="img-thumbnail" height="20"/>
       <% else %>
         <p><i>No Image Attached for this News Article</i></p>
       <% end %>

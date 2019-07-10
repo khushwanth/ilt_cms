@@ -18,7 +18,7 @@
   </ul>
 
   <div class="tab-content">
-    <div id="current" class="tab-pane fade in active">
+    <div id="current" class="tab-pane fade active">
       <% @present.each do |event| %> 
         <div class="container">
           <div class="row">
@@ -53,7 +53,7 @@
                 <span>Venue: <%= event.venue %></span></h6>
               </div>
               <div class="card-footer">
-                <%= link_to 'View Details', event, class: "btn btn-primary" %>
+                  <%= link_to 'View Details', event, class: "btn btn-primary" %>
                 <%= link_to 'Remove', event, method: :delete, data: { confirm: 'Are you sure?' }, class: "btn btn-danger"%>
               </div>
             </div>
