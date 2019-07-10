@@ -1,7 +1,15 @@
 <% content_for(:title, "Events") %>
 <% content_for(:page_title, "Events") %>
-
+<section class="table">
 <div class="container">
+    <% if current_user.admin %>
+      <div class="card">
+        <div class="card-header">
+          <%= link_to 'New Event', new_event_path, class: "btn btn-primary" %>
+        <div>
+      </div>
+    <% end %>
+  <br/>
   <ul class="nav nav-tabs nav-justified">
     <li class="active"><a data-toggle="tab" href="#current">Happening &nbsp;</a></li>
     <li><a data-toggle="tab" href="#past">Past &nbsp;</a></li>
@@ -16,7 +24,7 @@
           <div class="row">
             <div class="card col-md-12">
               <div class="card-body">
-                <h5 class="card-title"><%= event.title %></h5>
+                <h5 class="card-title"><%= event.title %></h5><br/>
                 <h6 class="card-subtitle mb-2 text-muted"><span>Date: <%= event.event_date %></span><br/>
                 <span>Starts at: <%= event.start_time %></span><br/>
                 <span>Ends at: <%= event.end_time %></span><br/>
@@ -24,6 +32,7 @@
               </div>
               <div class="card-footer">
                 <%= link_to 'View Details', event, class: "btn btn-primary" %>
+                <%= link_to 'Remove', event, method: :delete, data: { confirm: 'Are you sure?' }, class: "btn btn-danger"%>
               </div>
             </div>
           </div>
@@ -37,7 +46,7 @@
           <div class="row">
             <div class="card col-md-12">
               <div class="card-body">
-                <h5 class="card-title"><%= event.title %></h5>
+                <h5 class="card-title"><%= event.title %></h5><br/>
                 <h6 class="card-subtitle mb-2 text-muted"><span>Date: <%= event.event_date %></span><br/>
                 <span>Starts at: <%= event.start_time %></span><br/>
                 <span>Ends at: <%= event.end_time %></span><br/>
@@ -45,6 +54,7 @@
               </div>
               <div class="card-footer">
                 <%= link_to 'View Details', event, class: "btn btn-primary" %>
+                <%= link_to 'Remove', event, method: :delete, data: { confirm: 'Are you sure?' }, class: "btn btn-danger"%>
               </div>
             </div>
           </div>
@@ -58,7 +68,7 @@
           <div class="row">
             <div class="card col-md-12">
               <div class="card-body">
-                <h5 class="card-title"><%= event.title %></h5>
+                <h5 class="card-title"><%= event.title %></h5><br/>
                 <h6 class="card-subtitle mb-2 text-muted"><span>Date: <%= event.event_date %></span><br/>
                 <span>Starts at: <%= event.start_time %></span><br/>
                 <span>Ends at: <%= event.end_time %></span><br/>
@@ -68,6 +78,7 @@
                 <%= link_to 'View Details', event, class: "btn btn-primary" %>
                 <% if current_user.admin %>
                   <%= link_to 'Edit', edit_event_path(event), class: "btn btn-warning" %>
+                  <%= link_to 'Remove', event, method: :delete, data: { confirm: 'Are you sure?' }, class: "btn btn-danger"%>
                 <% end %>
               </div>
             </div>
@@ -82,7 +93,7 @@
           <div class="row">
             <div class="card col-md-12">
               <div class="card-body">
-                <h5 class="card-title"><%= event.title %></h5>
+                <h5 class="card-title"><%= event.title %></h5><br/>
                 <h6 class="card-subtitle mb-2 text-muted"><span>Date: <%= event.event_date %></span><br/>
                 <span>Starts at: <%= event.start_time %></span><br/>
                 <span>Ends at: <%= event.end_time %></span><br/>
@@ -100,39 +111,4 @@
       <% end %>
     </div>
 </div>
-
-<!-- 
-<table>
-  <thead>
-    <tr>
-      <th>Title</th>
-      <th>Event date</th>
-      <th>Start time</th>
-      <th>End time</th>
-      <th>Venue</th>
-      <th colspan="3"></th>
-    </tr>
-  </thead>
-
-  <tbody>
-    <% @future.each do |event| %>
-      <tr>
-        <td><%= event.title %></td>
-        <td><%= event.event_date %></td>
-        <td><%= event.start_time %></td>
-        <td><%= event.end_time %></td>
-        <td><%= event.venue %></td>
-        <td><%= link_to 'Show', event %></td>
-        <td><%= link_to 'Edit', edit_event_path(event) %></td>
-        <td><%= link_to 'Destroy', event, method: :delete, data: { confirm: 'Are you sure?' } %></td>
-      </tr>
-    <% end %>
-  </tbody>
-</table>
-
-<br>
--->
-
-<% if current_user.admin %>
-  <%= link_to 'New Event', new_event_path %>
-<% end %>
+</section>

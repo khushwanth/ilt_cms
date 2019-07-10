@@ -2,28 +2,32 @@
 <% content_for(:page_title, "News / Display Details") %>
 <div class="statistic d-flex align-items-center bg-white has-shadow">
   <div class="card col-md-12">
-    <div class="card-header">
-      <h4>Title</h4>
-      <%= @notification.title %>
+    <div class="card-header d-flex align-items-center">
+      <% if current_user.admin %>
+        <%= link_to 'Back', notifications_path, class: "btn btn-primary" %> &nbsp; &nbsp;
+        <%= link_to 'Edit', edit_notification_path(@notification), class: "btn btn-warning" %> &nbsp;&nbsp;
+        <%= link_to 'Remove', @notification, method: :delete, data: { confirm: 'Are you sure?' }, class: "btn btn-danger" %>
+      <% end %>
     </div>
     <div class="card-body">
+      <h4>Title</h4>
+      <%# <div class="client-title"> %>
+        
+    <%# </div> %>
+      <%= @notification.title %>
+      <br/><br/>
       <h4>News Content</h4>
-      <%= @notification.body %>
-    </div>
-    <div class="card-footer">
-      <h4>Image path</h4>
       <% if(@notification.flyer.attached? ) %>
         <img src="<%= (url_for(@notification.flyer)) %>"/>
       <% else %>
-        <p>No Image Attached for the event</p>
+        <p><i>No Image Attached for this News Article</i></p>
       <% end %>
+      <br/><br/>
+      <h5>Detail</h5>
+      <%= @notification.body %>
     </div>
+    <span style="color: #999; font-size: 12px">Created at: <%= @notification.created_at %></span>
+        <span style="color: #999; font-size: 12px">Last Updated: <%= @notification.updated_at %></span><br/> 
   </div>
-</div>
-<div class="left-col col-lg-6 d-flex align-items-center">
-  <% if current_user.admin %>
-    <%= link_to 'Edit', edit_notification_path(@notification), class: "btn btn-warning" %> &nbsp;&nbsp;
-  <% end %>
-    <%= link_to 'Back', notifications_path, class: "btn btn-primary" %>
 </div>
 

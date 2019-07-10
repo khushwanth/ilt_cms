@@ -2,9 +2,11 @@ class UserEventsController < ApplicationController
 
     def index
         @join_user = UsersEvent.new(user_id: current_user.id, event_id: params[:eid])
-        if @join_user.save()
-            redirect_to events_path
-        end
+        # TODO: needs validation
+            if @join_user.save()
+                redirect_to events_path
+            end
+        
     end
 
     def new

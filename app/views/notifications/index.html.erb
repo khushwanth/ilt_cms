@@ -29,8 +29,10 @@
                       <td><%= notification.title %></td>
                       <td><%= notification.body %></td>
                       <td><%= link_to 'Show', notification, class: "btn-primary small-button-padding" %></td>
-                        <td><%= link_to 'Edit', edit_notification_path(notification), class: "btn-warning small-button-padding" %></td>
-                        <td><%= link_to 'Destroy', notification, method: :delete, data: { confirm: 'Are you sure?' }, class: "btn-danger small-button-padding" %></td>
+                        <% if current_user.admin %>
+                          <td><%= link_to 'Edit', edit_notification_path(notification), class: "btn-warning small-button-padding" %></td>
+                          <td><%= link_to 'Destroy', notification, method: :delete, data: { confirm: 'Are you sure?' }, class: "btn-danger small-button-padding" %></td>
+                        <% end %>
                     </tr>
                   <% end %>
                 </tbody>

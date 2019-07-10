@@ -11,7 +11,7 @@ class EventPolicy < ApplicationPolicy
         user.admin?
     end
 
-   def destroy?
+    def destroy?
        user.admin?
     end
 

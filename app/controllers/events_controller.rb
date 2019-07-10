@@ -44,7 +44,7 @@ class EventsController < ApplicationController
     authorize(Event)
     respond_to do |format|
       if @event.save
-        format.html { redirect_to @event, notice: 'Event was successfully created.' }
+        format.html { redirect_to @event, notice: 'Event successfully created.' }
         format.json { render :show, status: :created, location: @event }
       else
         format.html { render :new }
@@ -57,14 +57,18 @@ class EventsController < ApplicationController
   # PATCH/PUT /events/1.json
   def update
     authorize(Event)
-    respond_to do |format|
-      if @event.update(event_params)
-        format.html { redirect_to @event, notice: 'Event was successfully updated.' }
-        format.json { render :show, status: :ok, location: @event }
-      else
-        format.html { render :edit }
-        format.json { render json: @event.errors, status: :unprocessable_entity }
+    if event_future (event_params)
+      respond_to do |format|
+        if @event.update(event_params)
+          format.html { redirect_to @event, notice: 'Event successfully updated.' }
+          format.json { render :show, status: :ok, location: @event }
+        else
+          format.html { render :edit }
+          format.json { render json: @event.errors, status: :unprocessable_entity }
+        end
       end
+    else
+
     end
   end
 
@@ -74,7 +78,7 @@ class EventsController < ApplicationController
     authorize(Event)
     @event.destroy
     respond_to do |format|
-      format.html { redirect_to events_url, notice: 'Event was successfully removed.' }
+      format.html { redirect_to events_url, notice: 'Event successfully removed.' }
       format.json { head :no_content }
     end
   end
@@ -88,5 +92,9 @@ class EventsController < ApplicationController
     # Never trust parameters from the scary internet, only allow the white list through.
     def event_params
       params.require(:event).permit(:title, :event_date, :start_time, :end_time, :venue)
+    end
+
+    def event_future(event_date)
+      Time.parse(event_date[:event_time].strftime("%Y-%m-%d")).future?
     end
 end

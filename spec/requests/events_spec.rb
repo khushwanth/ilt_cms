@@ -31,7 +31,7 @@ RSpec.describe EventsController, type: :controller do
                venue: 'Babesa'
             }
             expect { post(:create, params: { event: params }) }.to change(Event, :count).by(1)
-            expect(flash[:notice]).to eq 'Event was successfully created.'
+            expect(flash[:notice]).to eq 'Event successfully created.'
          end
       end
 
@@ -47,7 +47,7 @@ RSpec.describe EventsController, type: :controller do
             params.keys.each do |key|
                expect(event.attributes[key.to_s]).to eq params[key]
             end
-            expect(flash[:notice]).to eq 'Event was successfully updated.'
+            expect(flash[:notice]).to eq 'Event successfully updated.'
          end
       end
    
@@ -55,7 +55,7 @@ RSpec.describe EventsController, type: :controller do
          let!(:event) { FactoryGirl.create(:event) }
          it 'should delete an event and display a success notice' do
             expect { delete :destroy, params: { id: event.id } }.to change(Event, :count).by(-1)
-            expect(flash[:notice]).to eq 'Event was successfully removed.'
+            expect(flash[:notice]).to eq 'Event successfully removed.'
          end
       end
    end

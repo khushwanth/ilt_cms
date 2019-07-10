@@ -1,6 +1,9 @@
-<h1>Editing Event</h1>
+<% content_for(:title, "Events | Edit") %>
+<% content_for(:page_title, "Events / Edit") %>
 
 <%= render 'form', event: @event %>
 
-<%= link_to 'Show', @event %> |
-<%= link_to 'Back', events_path %>
+<div class="left-col col-lg-6 d-flex align-items-center">
+    <%= link_to 'Show', @event, class: "btn btn-success" %> &nbsp; &nbsp;
+    <%= link_to 'Back', events_path, class: "btn btn-primary"%>
+</div>

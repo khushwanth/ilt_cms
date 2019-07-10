@@ -11,7 +11,7 @@ before_action :set_user, only: [:show, :edit, :update, :destroy]
       
       respond_to do |format|
         if @user.update(user_params)
-          format.html { redirect_to @user, notice: 'Notification was successfully updated.' }
+          format.html { redirect_to @user, notice: 'User successfully updated.' }
           format.json { render :show, status: :ok, location: @user }
         else
           format.html { render :edit }
@@ -28,7 +28,7 @@ before_action :set_user, only: [:show, :edit, :update, :destroy]
       
         @user.destroy
         respond_to do |format|
-            format.html { redirect_to members_path, notice: 'User was successfully destroyed.' }
+            format.html { redirect_to members_path, notice: 'User successfully removed.' }
             format.json { head :no_content }
           end
     end
