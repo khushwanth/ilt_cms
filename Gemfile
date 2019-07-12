@@ -14,7 +14,7 @@ gem 'bootstrap', '~> 4.3.1'
 gem 'sprockets-rails'
 gem 'jquery-rails'
 gem 'font-awesome-rails'
-
+gem 'hirb'
 gem 'pry'
 
 
