@@ -55,7 +55,7 @@ group :development, :test do
   #RSpec
   gem 'rspec-rails', '~> 3.4'
   gem 'pry'
-
+  gem 'simplecov'
   gem 'factory_girl_rails'
   gem 'rails-controller-testing'
   gem 'database_cleaner'
