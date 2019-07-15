@@ -53,8 +53,12 @@
                     </div>
                     <div class="number">
                       <strong><span style="font-size: 15px">
+                      <% if @next_event %>
                         <%= link_to @next_event.title, @next_event, title: "Click to view Details" %>
                         <br><%= @next_event.event_date %>
+                      <% else %>
+                        No Upcoming Event
+                      <% end %>
                       </span></strong>
                     </div>
                   </div>
